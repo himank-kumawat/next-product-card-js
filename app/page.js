@@ -1,20 +1,13 @@
 import ProductCard from "../components/ProductCard";
+import { products as productsData } from "../lib/products";
 
-async function getProducts() {
-  // In a real app, I call an external API here.
-  const res = await fetch("http://localhost:3000/api/products", {
-    cache: "no-store"
-  });
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch products");
-  }
-
-  return res.json();
+function getProducts() {
+ 
+  return productsData;
 }
 
-export default async function HomePage() {
-  const products = await getProducts();
+export default function HomePage() {
+  const products = getProducts();
 
   return (
     <section
